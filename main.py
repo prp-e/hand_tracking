@@ -16,10 +16,13 @@ with mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5, m
         results = hands.process(image)
 
         image.flags.writeable = True
-        #print(results.multi_hand_landmarks)
+        landmark_list = []
         if results.multi_hand_landmarks:
-            for id, landmark in enumerate(results.multi_hand_landmarks):
-                print(f'{id} : {landmark}\n-----\n')
+            for id, landmark in enumerate(results.multi_hand_landmarks[0].landmark):
+                h, w, c = image.shape
+                cx, cy = int(landmark.x * w), int(landmark.y * h)
+                landmark_list.append([id, cx, cy])
+                print(landmark_list)
             
         cv2.imshow("Camera No. 1", cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
         if cv2.waitKey(1) & 0xff == ord('q'):
