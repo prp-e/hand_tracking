@@ -5,8 +5,6 @@ mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
 camera = cv2.VideoCapture(1)
-print(camera.get(3))
-print(camera.get(4))
 
 with mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5, max_num_hands = 1) as hands:
     while camera.isOpened():
