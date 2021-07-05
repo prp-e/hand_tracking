@@ -23,7 +23,7 @@ with mp_hands.Hands(min_detection_confidence=0.5, min_tracking_confidence=0.5, m
                 cx, cy = int(landmark.x * w), int(landmark.y * h)
                 landmark_list.append([id, cx, cy])
                 if id % 4 == 0:
-                    cv2.circle(image, (cx, cy), 15, (0, 0, 0), cv2.FILLED)
+                    cv2.circle(image, (cx, cy), 15, (255, 0, 200), cv2.FILLED)
             
         cv2.imshow("Camera No. 1", cv2.cvtColor(image, cv2.COLOR_RGB2BGR))
         if cv2.waitKey(1) & 0xff == ord('q'):
